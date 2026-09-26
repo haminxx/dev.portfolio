@@ -1,12 +1,14 @@
 import { Core } from "@tomo/api";
+import { BookOpen, LogIn } from "lucide-react";
+import { Footer } from "~/components/footer";
 import { Text } from "~/components/text";
-import { Theme } from "~/components/theme";
 import { Tomo } from "~/components/tomo";
+import { Button } from "~/components/ui/button";
 
 export default function HomePage() {
 	return (
-		<main className="mx-auto flex min-h-svh max-w-6xl flex-col px-4 py-20 sm:px-16">
-			<header className="flex items-center justify-between">
+		<main className="mx-auto flex min-h-svh max-w-6xl flex-col px-4 pt-20 sm:px-16">
+			<header className="flex items-center">
 				<Tomo.Link
 					to="/"
 					aria-label={`${Core.NAME} home`}
@@ -14,14 +16,18 @@ export default function HomePage() {
 				>
 					<Tomo.Logo className="size-6" />
 				</Tomo.Link>
-				<Theme.Toggle />
 			</header>
 			<div className="flex flex-1 flex-col justify-center">
 				<Text.Heading>{Core.DESCRIPTION}</Text.Heading>
-				<Text.Subtext>
-					{Core.NAME} <span className="font-mono">v{Core.VERSION}</span>
-				</Text.Subtext>
+				<div className="h-4 lg:h-8" />
+				<div className="flex flex-wrap items-center gap-2">
+					<Button size="lg">Log in</Button>
+					<Button size="lg" variant="secondary">
+						Read the docs
+					</Button>
+				</div>
 			</div>
+			<Footer.Site />
 		</main>
 	);
 }
