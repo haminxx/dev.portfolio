@@ -1,0 +1,24 @@
+{
+	"name": "@tomo/api",
+	"type": "module",
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy --minify",
+		"build": "wrangler deploy --minify --dry-run",
+		"typecheck": "tsc --noEmit",
+		"lint": "biome lint .",
+		"lint:fix": "biome lint --write .",
+		"format": "biome format --write .",
+		"test": "vitest run --passWithNoTests",
+		"test:dev": "vitest --passWithNoTests",
+		"typegen": "wrangler types --env-interface CloudflareBindings"
+	},
+	"dependencies": {
+		"hono": "^4.13.9"
+	},
+	"devDependencies": {
+		"@types/node": "^22.20.4",
+		"typescript": "^5.9.3",
+		"wrangler": "^4.110.0"
+	}
+}
