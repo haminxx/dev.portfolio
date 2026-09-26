@@ -1,21 +1,26 @@
 import type { ReactNode } from "react";
+import { cn } from "~/lib/utils";
 
 export function Root({
 	title,
-	description,
+	flip = false,
 	children,
 }: {
 	title: string;
-	description: string;
+	flip?: boolean;
 	children: ReactNode;
 }) {
 	return (
-		<figure className="flex flex-col gap-6">
-			{children}
-			<figcaption className="flex flex-col gap-1 text-sm">
-				<span className="font-medium">{title}</span>
-				<span className="text-balance text-muted-foreground">{description}</span>
+		<figure className="grid items-center gap-10 sm:grid-cols-2 sm:gap-16">
+			<figcaption
+				className={cn(
+					"text-balance font-[450] text-2xl tracking-tight sm:text-3xl",
+					flip && "sm:order-last",
+				)}
+			>
+				{title}
 			</figcaption>
+			<div>{children}</div>
 		</figure>
 	);
 }

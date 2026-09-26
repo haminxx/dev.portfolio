@@ -29,28 +29,23 @@ export default function HomePage() {
 			<div className="h-16" />
 			{/* TODO: replace with a demo of the shared desktop (video or live mockup) */}
 			<div className="aspect-video w-full rounded-2xl border bg-muted" />
-			<div className="h-24" />
-			<div className="grid gap-12 sm:grid-cols-3 sm:gap-8">
-				<Figure.Root
-					title="Always on"
-					description="It lives in the cloud, not on your laptop. Close the lid and your agents keep running. Pick it back up from your phone."
-				>
-					<Figure.AlwaysOn />
-				</Figure.Root>
-				<Figure.Root
-					title="One computer, everyone on it"
-					description="Your team and your agents share the same machine. When someone disconnects, everyone else keeps working."
-				>
-					<Figure.Shared />
-				</Figure.Root>
-				<Figure.Root
-					title="Isolated workspaces"
-					description="Every workspace is its own sandboxed computer. Spin up as many as you need, and nothing leaks between them."
-				>
-					<Figure.Isolated />
-				</Figure.Root>
-			</div>
-			<div className="h-16" />
+			<div className="h-40 sm:h-56" />
+			<Figure.Root title="Always on">
+				<Figure.AlwaysOn />
+			</Figure.Root>
+			<div className="h-32 sm:h-48" />
+			<Figure.Root title="Your agents work the night shift" flip>
+				<Figure.Activity />
+			</Figure.Root>
+			<div className="h-32 sm:h-48" />
+			<Figure.Root title="One computer, everyone on it">
+				<Figure.Shared />
+			</Figure.Root>
+			<div className="h-32 sm:h-48" />
+			<Figure.Root title="Isolated workspaces" flip>
+				<Figure.Isolated />
+			</Figure.Root>
+			<div className="h-40 sm:h-56" />
 			<Footer.Site />
 		</main>
 	);
