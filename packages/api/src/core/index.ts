@@ -12,6 +12,8 @@ export namespace Core {
 
 	export const Id = nanoid;
 
+	export const Ports = { Api: 8666, Web: 8667 } as const;
+
 	export type Env = "development" | "production";
 
 	export function isLocal(): boolean {

@@ -1,3 +1,4 @@
+import { Core } from "../core";
 import type { AppType } from "./routes";
 
 export namespace Api {
@@ -6,7 +7,7 @@ export namespace Api {
 	export const URLs = {
 		Domains: {
 			Production: "https://tomo.computer",
-			Development: "http://localhost:8667",
+			Development: `http://localhost:${Core.Ports.Web}`,
 		},
 	};
 }
