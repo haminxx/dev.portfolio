@@ -2,23 +2,24 @@
 	"name": "@tomo/api",
 	"type": "module",
 	"scripts": {
-		"dev": "wrangler dev",
-		"deploy": "wrangler deploy --minify",
-		"build": "wrangler deploy --minify --dry-run",
+		"dev": "tsx watch src/index.ts",
+		"build": "esbuild src/index.ts --bundle --platform=node --target=node22 --format=esm --outfile=dist/index.mjs",
+		"start": "node dist/index.mjs",
 		"typecheck": "tsc --noEmit",
 		"lint": "biome lint .",
 		"lint:fix": "biome lint --write .",
 		"format": "biome format --write .",
 		"test": "vitest run --passWithNoTests",
-		"test:dev": "vitest --passWithNoTests",
-		"typegen": "wrangler types --env-interface CloudflareBindings"
+		"test:dev": "vitest --passWithNoTests"
 	},
 	"dependencies": {
+		"@hono/node-server": "^2.1.1",
 		"hono": "^4.13.9"
 	},
 	"devDependencies": {
 		"@types/node": "^22.20.4",
-		"typescript": "^5.9.3",
-		"wrangler": "^4.110.0"
+		"esbuild": "^0.28.2",
+		"tsx": "^4.23.15",
+		"typescript": "^5.9.3"
 	}
 }

@@ -3,7 +3,7 @@
 	"ui": "tui",
 	"tasks": {
 		"typegen": {
-			"outputs": [".react-router/**", "worker-configuration.d.ts"],
+			"outputs": [".react-router/**"],
 			"cache": false
 		},
 		"build": {
