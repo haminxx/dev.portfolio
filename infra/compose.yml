@@ -1,0 +1,25 @@
+services:
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+  api:
+    image: ${IMAGE}
+    restart: unless-stopped
+    environment:
+      ENVIRONMENT: production
+      PORT: 8666
+    expose:
+      - "8666"
+
+volumes:
+  caddy_data:
+  caddy_config:

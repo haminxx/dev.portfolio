@@ -1,0 +1,28 @@
+#cloud-config
+package_update: true
+packages:
+  - docker.io
+  - docker-compose-v2
+
+fs_setup:
+  - device: /dev/disk/by-id/google-data
+    filesystem: ext4
+    partition: none
+    overwrite: false
+
+mounts:
+  - [/dev/disk/by-id/google-data, /data, ext4, "defaults,nofail,discard", "0", "2"]
+
+write_files:
+  - path: /etc/docker/daemon.json
+    content: |
+      {
+        "data-root": "/data/docker",
+        "log-driver": "json-file",
+        "log-opts": { "max-size": "50m", "max-file": "3" }
+      }
+
+runcmd:
+  - systemctl enable --now docker
+  - mkdir -p /opt/tomo
+  - gcloud auth configure-docker ${region}-docker.pkg.dev --quiet

@@ -40,3 +40,10 @@ local/
 
 # scratch
 .tmp/
+
+# tofu
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log

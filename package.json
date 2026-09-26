@@ -14,7 +14,11 @@
 		"test": "turbo test",
 		"typegen": "turbo typegen",
 		"check": "turbo typecheck lint test",
-		"deploy": "turbo deploy"
+		"deploy": "turbo deploy",
+		"ship": "./scripts/ship.sh",
+		"infra:plan": "tofu -chdir=infra plan",
+		"infra:apply": "tofu -chdir=infra apply",
+		"ssh": "gcloud compute ssh tomo --tunnel-through-iap"
 	},
 	"author": "not-manu",
 	"license": "MIT",

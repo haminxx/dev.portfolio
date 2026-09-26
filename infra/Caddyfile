@@ -1,0 +1,3 @@
+tomo.computer {
+	reverse_proxy api:8666
+}

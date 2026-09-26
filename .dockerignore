@@ -1,0 +1,12 @@
+.git
+node_modules
+**/node_modules
+**/dist
+**/build
+**/.turbo
+**/.react-router
+**/.tmp
+.tmp
+docs
+infra
+local
