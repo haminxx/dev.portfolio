@@ -34,15 +34,11 @@ export default function HomePage() {
 				<Figure.AlwaysOn />
 			</Figure.Root>
 			<div className="h-32 sm:h-48" />
-			<Figure.Root title="Your agents work the night shift" flip>
-				<Figure.Activity />
-			</Figure.Root>
-			<div className="h-32 sm:h-48" />
-			<Figure.Root title="One computer, everyone on it">
+			<Figure.Root title="One computer, everyone on it" flip>
 				<Figure.Shared />
 			</Figure.Root>
 			<div className="h-32 sm:h-48" />
-			<Figure.Root title="Isolated workspaces" flip>
+			<Figure.Root title="Isolated workspaces">
 				<Figure.Isolated />
 			</Figure.Root>
 			<div className="h-40 sm:h-56" />
