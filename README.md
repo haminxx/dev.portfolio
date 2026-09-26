@@ -5,7 +5,7 @@
 </picture>
 <br/>
 <br />
-**友**  
+<b>友</b>
 https://tomo.computer
 <br/>
 <br/>
