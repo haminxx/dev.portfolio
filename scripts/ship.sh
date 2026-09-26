@@ -10,8 +10,12 @@ git fetch origin
 git rebase origin/main
 
 CURRENT=$(node -p "require('./package.json').version")
-IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
-NEXT="$MAJOR.$MINOR.$((PATCH + 1))"
+if git rev-parse -q --verify "refs/tags/v$CURRENT" >/dev/null; then
+	IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
+	NEXT="$MAJOR.$MINOR.$((PATCH + 1))"
+else
+	NEXT="$CURRENT"
+fi
 
 rollback_local() {
 	play_failure
@@ -25,15 +29,16 @@ rollback_local() {
 }
 trap rollback_local ERR
 
-node -e "
-  const fs = require('fs');
-  const pkg = JSON.parse(fs.readFileSync('package.json'));
-  pkg.version = '$NEXT';
-  fs.writeFileSync('package.json', JSON.stringify(pkg, null, '\t') + '\n');
-"
-
-git add package.json
-git -c core.hooksPath=/dev/null commit -m "$NEXT"
+if [ "$NEXT" != "$CURRENT" ]; then
+	node -e "
+	  const fs = require('fs');
+	  const pkg = JSON.parse(fs.readFileSync('package.json'));
+	  pkg.version = '$NEXT';
+	  fs.writeFileSync('package.json', JSON.stringify(pkg, null, '\t') + '\n');
+	"
+	git add package.json
+	git -c core.hooksPath=/dev/null commit -m "$NEXT"
+fi
 git tag -a "v$NEXT" -m "v$NEXT"
 
 pnpm exec turbo typecheck lint test
