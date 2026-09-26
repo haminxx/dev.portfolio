@@ -13,6 +13,7 @@ Prefer our wrappers over the underlying libraries — they set sensible defaults
 - Call the API through `hono` (`~/lib/hono`) with `@tanstack/react-query`; surface failures with `errorMessage`.
 - Use `cn` (`~/lib/utils`) for merging class names — not template literals.
 - Fonts: `font-sans` (Geist) and `font-mono` (Berkeley Mono). There is no serif.
+- Colors: the palette is [Flexoki](https://stephango.com/flexoki). Use the `/flexoki` skill to look up exact hex values and theme roles rather than guessing.
 
 ## Layout
 
