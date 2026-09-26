@@ -26,6 +26,7 @@ export default function HomePage() {
 				</Button>
 			</div>
 			<div className="h-16" />
+			{/* TODO: replace with a demo of the shared desktop (video or live mockup) */}
 			<div className="aspect-video w-full rounded-2xl border bg-muted" />
 			<Footer.Site />
 		</main>
