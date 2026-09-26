@@ -1,7 +1,7 @@
 import { reactRouter } from "@react-router/dev/vite";
 import tailwindcss from "@tailwindcss/vite";
-import { Core } from "@tomo/api";
 import { defineConfig } from "vite";
+import { Core } from "../api/src/core";
 
 export default defineConfig({
 	plugins: [tailwindcss(), reactRouter()],
