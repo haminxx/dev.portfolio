@@ -41,6 +41,9 @@ local/
 # scratch
 .tmp/
 
+# sqlite
+.tomo/
+
 # tofu
 .terraform/
 *.tfstate

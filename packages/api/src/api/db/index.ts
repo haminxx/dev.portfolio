@@ -1,0 +1,26 @@
+import { customType, integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
+import { Core } from "../../core";
+import type { DbAPI } from "./api";
+
+export namespace Db {
+	export type Type = ReturnType<typeof DbAPI.connect>;
+	export type Tx = Parameters<Parameters<Type["transaction"]>[0]>[0];
+	export type Client = Type | Tx;
+
+	export const Id = Core.Id;
+	export const Table = sqliteTable;
+	export const Text = text;
+	export const Int = integer;
+	export const Bool = (name: string) => integer(name, { mode: "boolean" });
+	export const Timestamp = (name: string) => integer(name, { mode: "timestamp_ms" });
+	export const IsoTimestamp = customType<{ data: string; driverData: number }>({
+		dataType: () => "integer",
+		toDriver: (value) => Date.parse(value),
+		fromDriver: (value) => new Date(value).toISOString(),
+	});
+	export const UniqueIndex = uniqueIndex;
+
+	export function transaction<T>(db: Type, fn: (tx: Tx) => T) {
+		return db.transaction(fn);
+	}
+}
