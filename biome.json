@@ -1,0 +1,76 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.14/schema.json",
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"style": {
+				"noNonNullAssertion": "error",
+				"useImportType": "error"
+			},
+			"suspicious": {
+				"noExplicitAny": "error"
+			},
+			"complexity": {
+				"noBannedTypes": "error"
+			}
+		}
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab",
+		"lineWidth": 100
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		}
+	},
+	"css": {
+		"parser": {
+			"cssModules": true,
+			"tailwindDirectives": true
+		}
+	},
+	"files": {
+		"includes": ["packages/*/src/**", "packages/*/app/**", "*.ts", "*.json"]
+	},
+	"overrides": [
+		{
+			"includes": ["packages/web/app/app.css"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noUnknownProperty": "off",
+						"noUnknownFunction": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["packages/web/app/welcome/**"],
+			"linter": {
+				"rules": {
+					"a11y": {
+						"noSvgWithoutTitle": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["packages/web/app/routes.ts"],
+			"formatter": {
+				"enabled": false
+			},
+			"assist": {
+				"actions": {
+					"source": {
+						"organizeImports": "off"
+					}
+				}
+			}
+		}
+	]
+}
