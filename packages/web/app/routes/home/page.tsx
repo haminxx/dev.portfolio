@@ -1,5 +1,4 @@
 import { Core } from "@tomo/api";
-import { BookOpen, LogIn } from "lucide-react";
 import { Footer } from "~/components/footer";
 import { Text } from "~/components/text";
 import { Tomo } from "~/components/tomo";
@@ -18,8 +17,8 @@ export default function HomePage() {
 				</Tomo.Link>
 			</header>
 			<div className="flex flex-1 flex-col justify-center">
-				<Text.Heading>{Core.DESCRIPTION}</Text.Heading>
-				<div className="h-4 lg:h-8" />
+				<Text.Heading className="max-w-120">{Core.DESCRIPTION}</Text.Heading>
+				<div className="h-8" />
 				<div className="flex flex-wrap items-center gap-2">
 					<Button size="lg">Log in</Button>
 					<Button size="lg" variant="secondary">

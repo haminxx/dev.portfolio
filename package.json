@@ -2,7 +2,7 @@
 	"name": "tomo",
 	"version": "0.5.1",
 	"private": true,
-	"description": "a multiplayer OS for people and agents.",
+	"description": "a multiplayer OS for humans and agents.",
 	"scripts": {
 		"build": "turbo build",
 		"dev": "turbo dev",

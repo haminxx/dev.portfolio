@@ -8,7 +8,7 @@
 https://tomo.computer
 <br/>
 <br/>
-a multiplayer OS for people and agents.
+a multiplayer OS for humans and agents.
 
 <br/>
 <br/>
