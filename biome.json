@@ -39,22 +39,12 @@
 	},
 	"overrides": [
 		{
-			"includes": ["packages/web/app/app.css"],
+			"includes": ["packages/web/app/*.css"],
 			"linter": {
 				"rules": {
 					"correctness": {
 						"noUnknownProperty": "off",
 						"noUnknownFunction": "off"
-					}
-				}
-			}
-		},
-		{
-			"includes": ["packages/web/app/welcome/**"],
-			"linter": {
-				"rules": {
-					"a11y": {
-						"noSvgWithoutTitle": "off"
 					}
 				}
 			}
