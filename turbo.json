@@ -1,0 +1,41 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"ui": "tui",
+	"tasks": {
+		"typegen": {
+			"outputs": [".react-router/**", "worker-configuration.d.ts"],
+			"cache": false
+		},
+		"build": {
+			"dependsOn": ["^build", "typegen"],
+			"outputs": ["build/**", "dist/**"]
+		},
+		"dev": {
+			"dependsOn": ["typegen"],
+			"with": ["@tomo/api#test:dev", "@tomo/web#test:dev"],
+			"cache": false,
+			"persistent": true
+		},
+		"typecheck": {
+			"dependsOn": ["^typecheck", "typegen"]
+		},
+		"lint": {},
+		"lint:fix": {
+			"cache": false
+		},
+		"format": {},
+		"test": {
+			"dependsOn": ["typegen"],
+			"cache": false
+		},
+		"test:dev": {
+			"dependsOn": ["typegen"],
+			"cache": false,
+			"persistent": true
+		},
+		"deploy": {
+			"dependsOn": ["build"],
+			"cache": false
+		}
+	}
+}
