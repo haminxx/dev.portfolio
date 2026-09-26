@@ -6,7 +6,7 @@ Prefer our wrappers over the underlying libraries — they set sensible defaults
 
 - Prefer `Tomo.Link` over react-router's `Link`.
 - Prefer `Tomo.Image` over `<img>` for static art (register it in `tomo/registry.ts`).
-- Use `Tomo.Logo` for the logo mark; it follows `currentColor` and fills with `--background`, so it works in both themes. Source art lives in `docs/brand/`; the favicon (`public/favicon.svg`) switches via `prefers-color-scheme`.
+- Use `Tomo.Logo` for the logo mark; it always renders the light version (paper fill, black stroke) regardless of theme. Source art lives in `docs/brand/`; the favicon (`public/favicon.svg`) is a copy of `docs/brand/logo-light.svg`.
 - Prefer `Text` (`~/components/text`) over raw heading/paragraph elements.
 - Use `Form.TextField` / `Form.TextareaField` with `react-hook-form` + `zod` for forms.
 - Use `User.Avatar` for people (falls back to a `BoringAvatar` seeded by id).

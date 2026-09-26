@@ -8,12 +8,7 @@
 https://tomo.computer
 <br/>
 <br/>
-one computer.
-<br/>
-all your friends on it.
-<br/>
-<br/>
-and one who lives inside.
+a multiplayer OS for people and agents.
 
 <br/>
 <br/>

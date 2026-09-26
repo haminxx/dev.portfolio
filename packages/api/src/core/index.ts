@@ -8,7 +8,7 @@ export namespace Core {
 	export const LICENSE = license;
 
 	export const NAME = "Tomo";
-	export const DESCRIPTION = "One computer. All your friends on it. And one who lives inside.";
+	export const DESCRIPTION = "A multiplayer OS for people and agents.";
 
 	export const Id = nanoid;
 

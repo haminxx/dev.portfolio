@@ -2,7 +2,7 @@
 	"name": "tomo",
 	"version": "0.5.1",
 	"private": true,
-	"description": "one computer. all your friends on it. and one who lives inside.",
+	"description": "a multiplayer OS for people and agents.",
 	"scripts": {
 		"build": "turbo build",
 		"dev": "turbo dev",
