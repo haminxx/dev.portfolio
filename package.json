@@ -1,6 +1,6 @@
 {
 	"name": "tomo",
-	"version": "0.5.0",
+	"version": "0.5.1",
 	"private": true,
 	"description": "one computer. all your friends on it. and one who lives inside.",
 	"scripts": {
