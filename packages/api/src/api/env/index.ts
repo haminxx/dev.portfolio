@@ -16,6 +16,9 @@ const schema = z.object({
 		.string()
 		.min(1)
 		.transform((file) => resolve(ROOT, file)),
+	BETTER_AUTH_SECRET: z.string().min(32),
+	GOOGLE_CLIENT_ID: z.string().optional(),
+	GOOGLE_CLIENT_SECRET: z.string().optional(),
 });
 
 export type Env = z.infer<typeof schema>;

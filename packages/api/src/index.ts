@@ -2,7 +2,10 @@ import { serve } from "@hono/node-server";
 import { serveStatic } from "@hono/node-server/serve-static";
 import { Hono } from "hono";
 import app from "./api/app";
+import { DbAPI } from "./api/db/api";
 import { Env } from "./api/env";
+
+DbAPI.migrate(DbAPI.instance());
 
 const server = new Hono()
 	.route("/", app)

@@ -13,12 +13,17 @@
 		"lint:fix": "biome lint --write .",
 		"format": "biome format --write .",
 		"test": "vitest run --passWithNoTests",
-		"test:dev": "vitest --passWithNoTests"
+		"test:dev": "vitest --passWithNoTests",
+		"db:studio": "drizzle-kit studio",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "drizzle-kit migrate"
 	},
 	"dependencies": {
 		"@hono/node-server": "^2.1.1",
+		"better-auth": "^1.7.6",
 		"better-sqlite3": "^13.0.3",
 		"drizzle-orm": "^0.45.3",
+		"drizzle-zod": "^0.8.3",
 		"hono": "^4.13.9",
 		"nanoid": "^6.0.1",
 		"zod": "^4.6.5"

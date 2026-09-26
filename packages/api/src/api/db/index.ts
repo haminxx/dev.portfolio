@@ -1,8 +1,17 @@
-import { customType, integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
+import type { DrizzleAdapterConfig } from "better-auth/adapters/drizzle";
+import {
+	customType,
+	index,
+	integer,
+	sqliteTable,
+	text,
+	uniqueIndex,
+} from "drizzle-orm/sqlite-core";
 import { Core } from "../../core";
 import type { DbAPI } from "./api";
 
 export namespace Db {
+	export const Provider = "sqlite" satisfies DrizzleAdapterConfig["provider"];
 	export type Type = ReturnType<typeof DbAPI.connect>;
 	export type Tx = Parameters<Parameters<Type["transaction"]>[0]>[0];
 	export type Client = Type | Tx;
@@ -18,6 +27,7 @@ export namespace Db {
 		toDriver: (value) => Date.parse(value),
 		fromDriver: (value) => new Date(value).toISOString(),
 	});
+	export const Index = index;
 	export const UniqueIndex = uniqueIndex;
 
 	export function transaction<T>(db: Type, fn: (tx: Tx) => T) {

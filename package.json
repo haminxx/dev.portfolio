@@ -17,7 +17,12 @@
 		"ship": "./scripts/ship.sh",
 		"infra:plan": "tofu -chdir=infra plan",
 		"infra:apply": "tofu -chdir=infra apply",
-		"ssh": "gcloud compute ssh tomo --tunnel-through-iap"
+		"ssh": "gcloud compute ssh tomo --tunnel-through-iap",
+		"db:studio": "turbo db:studio",
+		"db:generate": "turbo db:generate",
+		"db:migrate": "turbo db:migrate",
+		"db:prod:studio": "./scripts/db-prod.sh studio",
+		"db:prod:migrate": "./scripts/db-prod.sh migrate"
 	},
 	"author": "not-manu",
 	"license": "MIT",

@@ -36,6 +36,17 @@
 		"deploy": {
 			"dependsOn": ["build"],
 			"cache": false
+		},
+		"db:studio": {
+			"cache": false,
+			"persistent": true,
+			"interactive": true
+		},
+		"db:generate": {
+			"cache": false
+		},
+		"db:migrate": {
+			"cache": false
 		}
 	}
 }

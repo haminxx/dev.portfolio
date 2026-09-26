@@ -26,6 +26,24 @@ services:
     expose:
       - "8666"
 
+  tools:
+    profiles: [tools]
+    build:
+      context: ..
+      target: build
+    image: tomo-tools:${VERSION:-dev}
+    user: "1000:1000"
+    working_dir: /app/packages/api
+    env_file: ../../.env
+    environment:
+      ENVIRONMENT: production
+      HOME: /tmp
+    volumes:
+      - /data/tomo:/data/tomo
+    ports:
+      - "127.0.0.1:4983:4983"
+    command: pnpm exec drizzle-kit studio --host 0.0.0.0 --port 4983
+
 volumes:
   caddy_data:
   caddy_config:

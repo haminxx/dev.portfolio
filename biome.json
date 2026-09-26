@@ -35,7 +35,13 @@
 		}
 	},
 	"files": {
-		"includes": ["packages/*/src/**", "packages/*/app/**", "*.ts", "*.json"]
+		"includes": [
+			"packages/*/src/**",
+			"packages/*/app/**",
+			"*.ts",
+			"*.json",
+			"!packages/api/src/api/db/migrations"
+		]
 	},
 	"overrides": [
 		{

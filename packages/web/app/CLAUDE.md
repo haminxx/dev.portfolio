@@ -10,6 +10,7 @@ Prefer our wrappers over the underlying libraries — they set sensible defaults
 - Prefer `Text` (`~/components/text`) over raw heading/paragraph elements.
 - Use `Form.TextField` / `Form.TextareaField` with `react-hook-form` + `zod` for forms.
 - Use `User.Avatar` for people (falls back to a `BoringAvatar` seeded by id).
+- Auth goes through `~/lib/auth` (`useSession`, `signIn`, `signUp`, `signOut`); it's a better-auth client pointed at `/api/auth`.
 - Call the API through `hono` (`~/lib/hono`) with `@tanstack/react-query`; surface failures with `errorMessage`.
 - Use `cn` (`~/lib/utils`) for merging class names — not template literals.
 - Fonts: `font-sans` (Geist) and `font-mono` (Berkeley Mono). There is no serif.
