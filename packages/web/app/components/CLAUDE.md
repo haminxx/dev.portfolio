@@ -39,5 +39,6 @@ Used as `<Workspace.List.Root />`.
 - Subcomponents (`empty.tsx`, `loading.tsx`, `error.tsx`, `actions.tsx`) live as siblings, not nested folders, unless they themselves need a namespace.
 - Parent-owned layout: components style their insides only — no external sizing, positioning, or margins on their root. They stretch to fill (`h-full`, `flex-1`); the parent (usually the page) decides dimensions and placement.
 - Avoid naming a route's default export the same as an imported namespace (e.g. don't `export default function Home()` if you import `Home`).
+- `tomo/` holds app-wide primitives (`<Tomo.Link />`, `<Tomo.Image />`). It deviates from the `root.tsx` convention: each member is its own file with no `Root`. `Tomo.Image` is for static, bundled art registered in `tomo/registry.ts` (referenced by `name`); for user-supplied or remote URLs use a plain `<img>`.
 - `ui/` is shadcn-managed (`pnpm --filter @tomo/web exec shadcn add <name>`); don't hand-write components there.
 - Use `cn` (`~/lib/utils`) for merging class names — not template literals.
