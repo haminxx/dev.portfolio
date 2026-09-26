@@ -1,6 +1,9 @@
 {
 	"name": "@tomo/api",
 	"type": "module",
+	"exports": {
+		".": "./src/exports.ts"
+	},
 	"scripts": {
 		"dev": "tsx watch src/index.ts",
 		"build": "esbuild src/index.ts --bundle --platform=node --target=node22 --format=esm --outfile=dist/index.mjs",
@@ -14,7 +17,8 @@
 	},
 	"dependencies": {
 		"@hono/node-server": "^2.1.1",
-		"hono": "^4.13.9"
+		"hono": "^4.13.9",
+		"nanoid": "^6.0.1"
 	},
 	"devDependencies": {
 		"@types/node": "^22.20.4",
