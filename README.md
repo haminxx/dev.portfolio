@@ -1,6 +1,6 @@
 <picture>
-  <source srcset="./docs/brand/logo-dark.svg" media="(prefers-color-scheme: dark)"/>
-  <source srcset="./docs/brand/logo-light.svg" media="(prefers-color-scheme: light)"/>
+  <!-- <source srcset="./docs/brand/logo-dark.svg" media="(prefers-color-scheme: dark)"/> -->
+  <!-- <source srcset="./docs/brand/logo-light.svg" media="(prefers-color-scheme: light)"/> -->
   <img src="./docs/brand/logo-light.svg" width="64"/>
 </picture>
 <br/>
