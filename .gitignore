@@ -1,0 +1,42 @@
+# deps
+node_modules/
+
+# build
+dist/
+build/
+
+# env
+.env
+.env.*
+.dev.vars
+
+# logs
+*.log
+
+# os
+.DS_Store
+Thumbs.db
+
+# editors
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+
+# cloudflare
+.wrangler/
+
+# react router
+.react-router/
+
+# turbo
+.turbo/
+
+# typescript
+*.tsbuildinfo
+
+# local/
+local/
+
+# scratch
+.tmp/
