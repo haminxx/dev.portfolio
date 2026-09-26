@@ -16,16 +16,17 @@ export default function HomePage() {
 					<Tomo.Logo className="size-6" />
 				</Tomo.Link>
 			</header>
-			<div className="flex flex-1 flex-col justify-center">
-				<Text.Heading className="max-w-120">{Core.DESCRIPTION}</Text.Heading>
-				<div className="h-8" />
-				<div className="flex flex-wrap items-center gap-2">
-					<Button size="lg">Log in</Button>
-					<Button size="lg" variant="secondary">
-						Read the docs
-					</Button>
-				</div>
+			<div className="h-24 sm:h-32" />
+			<Text.Heading className="max-w-120">{Core.DESCRIPTION}</Text.Heading>
+			<div className="h-8" />
+			<div className="flex flex-wrap items-center gap-2">
+				<Button size="lg">Log in</Button>
+				<Button size="lg" variant="secondary">
+					Read the docs
+				</Button>
 			</div>
+			<div className="h-16" />
+			<div className="aspect-video w-full rounded-2xl border bg-muted" />
 			<Footer.Site />
 		</main>
 	);
