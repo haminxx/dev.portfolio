@@ -1,4 +1,5 @@
 import { Core } from "@tomo/api";
+import { Text } from "~/components/text";
 import { Theme } from "~/components/theme";
 
 export default function HomePage() {
@@ -9,11 +10,10 @@ export default function HomePage() {
 				<Theme.Toggle />
 			</header>
 			<div className="flex flex-1 flex-col justify-center">
-				<h1 className="text-3xl font-[450] tracking-tight">{Core.NAME}</h1>
-				<p className="mt-3 text-muted-foreground text-sm">
-					<span className="font-serif">{Core.DESCRIPTION}</span>{" "}
-					<span className="font-mono">v{Core.VERSION}</span>
-				</p>
+				<Text.Heading>{Core.NAME}</Text.Heading>
+				<Text.Subtext>
+					{Core.DESCRIPTION} <span className="font-mono">v{Core.VERSION}</span>
+				</Text.Subtext>
 			</div>
 		</main>
 	);

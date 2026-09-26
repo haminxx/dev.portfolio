@@ -1,4 +1,6 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Core } from "@tomo/api";
+import { useState } from "react";
 import {
 	isRouteErrorResponse,
 	Links,
@@ -35,12 +37,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+	const [queryClient] = useState(
+		() =>
+			new QueryClient({
+				defaultOptions: {
+					queries: { retry: 1, staleTime: Infinity },
+					mutations: { retry: 1 },
+				},
+			}),
+	);
 	return (
 		<Theme.Provider>
-			<TooltipProvider>
-				<Outlet />
-				<Toaster />
-			</TooltipProvider>
+			<QueryClientProvider client={queryClient}>
+				<TooltipProvider>
+					<Outlet />
+					<Toaster />
+				</TooltipProvider>
+			</QueryClientProvider>
 		</Theme.Provider>
 	);
 }
