@@ -1,3 +1,5 @@
+name: tomo
+
 services:
   caddy:
     image: caddy:2
@@ -12,7 +14,8 @@ services:
       - caddy_config:/config
 
   api:
-    image: ${IMAGE}
+    build: ..
+    image: tomo-api:${VERSION:-dev}
     restart: unless-stopped
     environment:
       ENVIRONMENT: production
