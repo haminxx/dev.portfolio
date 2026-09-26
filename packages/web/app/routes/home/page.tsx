@@ -17,9 +17,9 @@ export default function HomePage() {
 				<Theme.Toggle />
 			</header>
 			<div className="flex flex-1 flex-col justify-center">
-				<Text.Heading>{Core.NAME}</Text.Heading>
+				<Text.Heading>{Core.DESCRIPTION}</Text.Heading>
 				<Text.Subtext>
-					{Core.DESCRIPTION} <span className="font-mono">v{Core.VERSION}</span>
+					{Core.NAME} <span className="font-mono">v{Core.VERSION}</span>
 				</Text.Subtext>
 			</div>
 		</main>
