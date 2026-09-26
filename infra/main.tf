@@ -19,11 +19,11 @@ variable "project" {
 }
 
 variable "region" {
-  default = "northamerica-northeast2"
+  default = "us-west1"
 }
 
 variable "zone" {
-  default = "northamerica-northeast2-a"
+  default = "us-west1-b"
 }
 
 variable "machine_type" {
