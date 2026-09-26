@@ -20,6 +20,9 @@ services:
     environment:
       ENVIRONMENT: production
       PORT: 8666
+    env_file: ../../.env
+    volumes:
+      - /data/tomo:/data/tomo
     expose:
       - "8666"
 

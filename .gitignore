@@ -50,3 +50,6 @@ local/
 *.tfstate.*
 *.tfvars
 crash.log
+
+# env example is committed
+!.env.example

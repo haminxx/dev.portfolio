@@ -25,4 +25,5 @@ write_files:
 runcmd:
   - systemctl enable --now docker
   - mkdir -p /opt/tomo
+  - install -d -o 1000 -g 1000 /data/tomo
   - gcloud auth configure-docker ${region}-docker.pkg.dev --quiet

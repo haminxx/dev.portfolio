@@ -6,6 +6,11 @@ play_success() { afplay /System/Library/Sounds/Glass.aiff 2>/dev/null || true; }
 play_failure() { afplay /System/Library/Sounds/Sosumi.aiff 2>/dev/null || true; }
 trap 'play_failure' ERR
 
+if [ ! -f .env.production ]; then
+	echo "✗ missing .env.production — copy .env.example and fill in production values"
+	exit 1
+fi
+
 git fetch origin
 git rebase origin/main
 
@@ -43,8 +48,9 @@ git tag -a "v$NEXT" -m "v$NEXT"
 
 pnpm exec turbo typecheck lint test
 
+gcloud compute scp .env.production tomo:.env.production --tunnel-through-iap --quiet
 git archive --format=tar "v$NEXT" | gcloud compute ssh tomo --tunnel-through-iap --quiet --command \
-	"sudo rm -rf /opt/tomo/src && sudo mkdir -p /opt/tomo/src && sudo tar -x -C /opt/tomo/src && cd /opt/tomo/src/infra && sudo VERSION=$NEXT docker compose up -d --build --remove-orphans"
+	"sudo install -m 600 -o root -g root .env.production /opt/tomo/.env && rm .env.production && sudo install -d -o 1000 -g 1000 /data/tomo && sudo rm -rf /opt/tomo/src && sudo mkdir -p /opt/tomo/src && sudo tar -x -C /opt/tomo/src && cd /opt/tomo/src/infra && sudo VERSION=$NEXT docker compose up -d --build --remove-orphans"
 
 trap - ERR
 
