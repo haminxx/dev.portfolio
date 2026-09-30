@@ -9,6 +9,8 @@ terraform {
   }
 
   backend "gcs" {
+    # Default state bucket. Override at init without editing this file:
+    #   tofu init -backend-config="bucket=YOUR_BUCKET"
     bucket = "tomo-computer-tfstate"
     prefix = "tofu"
   }
@@ -24,6 +26,10 @@ variable "region" {
 
 variable "zone" {
   default = "us-west1-b"
+}
+
+variable "name" {
+  default = "tomo"
 }
 
 variable "machine_type" {
@@ -51,14 +57,14 @@ resource "google_project_service" "apis" {
 }
 
 resource "google_artifact_registry_repository" "tomo" {
-  repository_id = "tomo"
+  repository_id = var.name
   format        = "DOCKER"
   location      = var.region
   depends_on    = [google_project_service.apis]
 }
 
 resource "google_service_account" "vm" {
-  account_id = "tomo-vm"
+  account_id = "${var.name}-vm"
 }
 
 resource "google_project_iam_member" "vm" {
@@ -73,12 +79,12 @@ resource "google_project_iam_member" "vm" {
 }
 
 resource "google_compute_address" "tomo" {
-  name       = "tomo"
+  name       = var.name
   depends_on = [google_project_service.apis]
 }
 
 resource "google_compute_disk" "data" {
-  name       = "tomo-data"
+  name       = "${var.name}-data"
   type       = "pd-balanced"
   size       = var.data_disk_gb
   depends_on = [google_project_service.apis]
@@ -89,7 +95,7 @@ resource "google_compute_disk" "data" {
 }
 
 resource "google_compute_instance" "tomo" {
-  name         = "tomo"
+  name         = var.name
   machine_type = var.machine_type
   tags         = ["tomo"]
 
@@ -127,7 +133,7 @@ resource "google_compute_instance" "tomo" {
 }
 
 resource "google_compute_firewall" "web" {
-  name    = "tomo-web"
+  name    = "${var.name}-web"
   network = "default"
 
   allow {
@@ -146,7 +152,7 @@ resource "google_compute_firewall" "web" {
 }
 
 resource "google_compute_firewall" "iap_ssh" {
-  name    = "tomo-iap-ssh"
+  name    = "${var.name}-iap-ssh"
   network = "default"
 
   allow {
