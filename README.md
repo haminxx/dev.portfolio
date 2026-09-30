@@ -54,7 +54,7 @@ pnpm sandbox:build
 pnpm dev
 ```
 
-needs Node 22, pnpm and a running Docker daemon. fill in `BETTER_AUTH_SECRET`, and `OPENAI_API_KEY` if you want the agent. the database migrates itself on boot.
+needs Node 22, pnpm and a running Docker daemon. fill in `BETTER_AUTH_SECRET` (`openssl rand -base64 32`). `DOMAIN` defaults to `tomo.computer`. `OPENAI_API_KEY` is optional. Google OAuth is not used. boot seeds one guest on one workspace, and `/` opens that shared desktop.
 
 <br/>
 <br/>

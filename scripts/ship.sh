@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+source "$(dirname "$0")/gcp.sh"
 cd "$(dirname "$0")/.."
 
 play_success() { afplay /System/Library/Sounds/Glass.aiff 2>/dev/null || true; }
@@ -74,7 +75,7 @@ grep -qx $CADDY /opt/tomo/caddy.sha 2>/dev/null || { sudo docker compose restart
 } || echo '⚠ server cleanup failed (deploy is fine)'"
 
 git archive --format=tar --add-file=.env.production "v$NEXT" \
-	| gcloud compute ssh tomo --tunnel-through-iap --quiet --command "$REMOTE"
+	| gcloud compute ssh "$VM_NAME" --project "$GCP_PROJECT" --zone "$GCP_ZONE" --tunnel-through-iap --quiet --command "$REMOTE"
 
 trap - ERR
 
@@ -87,4 +88,4 @@ if ! git push --atomic --follow-tags; then
 fi
 
 play_success
-echo "✓ v$NEXT is live at https://tomo.computer"
+echo "✓ v$NEXT is live at https://$DOMAIN"

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+source "$(dirname "$0")/gcp.sh"
 
 REMOTE='
 section() { printf "\n\033[1m== %s ==\033[0m\n" "$1"; }
@@ -34,4 +35,4 @@ OOM=$(sudo journalctl -k --since "7 days ago" --no-pager -q | grep -i "out of me
 echo "${OOM:-none}"
 '
 
-gcloud compute ssh tomo --tunnel-through-iap --quiet --command "$REMOTE" </dev/null
+gcloud compute ssh "$VM_NAME" --project "$GCP_PROJECT" --zone "$GCP_ZONE" --tunnel-through-iap --quiet --command "$REMOTE" </dev/null
