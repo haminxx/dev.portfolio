@@ -1,0 +1,12 @@
+# Copy to terraform.tfvars to override the defaults in main.tf.
+# These values are the original project. Do not apply until the project,
+# state bucket, and domain belong to the account you want to deploy.
+
+project = "tomo-computer"
+region  = "us-west1"
+zone    = "us-west1-b"
+name    = "tomo"
+
+# The state bucket is backend config, not a variable. The default in main.tf
+# is tomo-computer-tfstate. Point init at a different bucket without editing it:
+#   tofu init -backend-config="bucket=YOUR_BUCKET"
