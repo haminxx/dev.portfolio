@@ -1,6 +1,7 @@
 import { Guest } from "@tomo/api";
 import { useSearchParams } from "react-router";
 import { Desktop } from "~/components/desktop";
+import { Profile } from "~/components/profile";
 import { Theme } from "~/components/theme";
 import { Skeleton } from "~/components/ui/skeleton";
 import { useDesktops } from "~/hooks/use-desktops";
@@ -46,6 +47,7 @@ export default function DesktopPage() {
 						<Skeleton className="h-9 w-48 rounded-xl" />
 					)}
 					<div className="grow" />
+					<Profile.Menu />
 					<Theme.Switch />
 				</div>
 				{workspace && active ? (
