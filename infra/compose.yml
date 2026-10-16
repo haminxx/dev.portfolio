@@ -21,6 +21,9 @@ services:
     environment:
       ENVIRONMENT: production
       PORT: 8666
+    # /opt/tomo/.env carries the secrets: BETTER_AUTH_SECRET, GOOGLE_CLIENT_ID,
+    # GOOGLE_CLIENT_SECRET, SUPABASE_URL, SUPABASE_SECRET_KEY, OWNER_EMAILS.
+    # They stay on the server; none of them reach the browser bundle.
     env_file: ../../.env
     # Matches the docker group created in cloud-init.yaml.
     group_add:
