@@ -1,4 +1,5 @@
 import { createMiddleware } from "hono/factory";
+import { GuestAPI } from "../../guest/api";
 import { WorkspaceAPI } from "../../workspace/api";
 import { DbAPI } from "../db/api";
 import type { Middleware } from "./index";
@@ -9,7 +10,9 @@ export const isMember = createMiddleware<Middleware.IsMember>(async (c, next) =>
 	const workspace = id ? WorkspaceAPI.get(db, { id }) : undefined;
 	if (!workspace) return c.json({ message: "Not found" }, 404);
 
-	const member = WorkspaceAPI.member(db, { workspace, user: c.get("identity").user });
+	const user = c.get("identity").user;
+	const member =
+		WorkspaceAPI.member(db, { workspace, user }) ?? GuestAPI.join(db, { workspace, user });
 	if (!member) return c.json({ message: "Forbidden" }, 403);
 
 	c.set("workspace", workspace);
