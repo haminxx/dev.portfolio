@@ -67,6 +67,20 @@ export namespace GuestAPI {
 		SandboxAPI.create(existing.id);
 	}
 
+	/**
+	 * The portfolio desktop is public: everyone browses it through the shared guest
+	 * session. Someone who signs in (the owner, via Google) keeps their own session, so
+	 * join them to the same workspace instead of handing them a 403.
+	 */
+	export function join(db: Db.Type, args: { workspace: { id: string }; user: { id: string } }) {
+		if (args.workspace.id !== Guest.WorkspaceId) return undefined;
+		db.insert(Member.Table)
+			.values({ workspaceId: args.workspace.id, userId: args.user.id, role: "member" })
+			.onConflictDoNothing()
+			.run();
+		return WorkspaceAPI.member(db, args);
+	}
+
 	export async function sessionCookie() {
 		const db = DbAPI.instance();
 		const user = db.select().from(User.Table).where(eq(User.Table.id, Guest.UserId)).get();

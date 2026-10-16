@@ -30,6 +30,9 @@ const schema = z.object({
 	GOOGLE_CLIENT_ID: z.string().optional(),
 	GOOGLE_CLIENT_SECRET: z.string().optional(),
 	OPENAI_API_KEY: z.string().startsWith("sk-").optional(),
+	SUPABASE_URL: z.url().optional(),
+	SUPABASE_SECRET_KEY: z.string().min(1).optional(),
+	OWNER_EMAILS: z.string().optional(),
 });
 
 export type Env = z.infer<typeof schema>;

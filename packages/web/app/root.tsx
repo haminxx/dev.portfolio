@@ -11,9 +11,11 @@ import {
 } from "react-router";
 import type { Route } from "./+types/root";
 import "./app.css";
+import { Consent } from "./components/consent";
 import { Theme } from "./components/theme";
 import { Toaster } from "./components/ui/sonner";
 import { TooltipProvider } from "./components/ui/tooltip";
+import { usePageView } from "./hooks/use-page-view";
 
 export const meta: Route.MetaFunction = () => [{ title: Core.NAME }];
 
@@ -38,6 +40,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+	usePageView();
 	const [queryClient] = useState(
 		() =>
 			new QueryClient({
@@ -52,6 +55,7 @@ export default function App() {
 			<QueryClientProvider client={queryClient}>
 				<TooltipProvider>
 					<Outlet />
+					<Consent.Banner />
 					<Toaster />
 				</TooltipProvider>
 			</QueryClientProvider>

@@ -1,4 +1,3 @@
-import { Guest } from "@tomo/api";
 import { useEffect, useRef } from "react";
 import { Outlet } from "react-router";
 import { Skeleton } from "~/components/ui/skeleton";
@@ -22,7 +21,9 @@ function Shell() {
 export default function DesktopLayout() {
 	const { data: session, isPending, refetch } = useSession();
 	const started = useRef(false);
-	const ready = session?.user.id === Guest.UserId;
+	// Anyone without a session browses as the shared guest; a signed-in visitor
+	// (the owner, through Google) keeps their own session instead of losing it here.
+	const ready = Boolean(session?.user);
 
 	useEffect(() => {
 		if (isPending || ready || started.current) return;

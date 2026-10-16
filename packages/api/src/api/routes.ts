@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import analyticsApp from "../analytics/app";
 import userApp from "../auth/user/app";
 import guestApp from "../guest/app";
 import syncApp from "../sync/app";
@@ -9,6 +10,7 @@ import statusApp from "./status/app";
 const app = new Hono()
 	.basePath("/api")
 	.route("/status", statusApp)
+	.route("/analytics", analyticsApp)
 	.route("/guest", guestApp)
 	.route("/sync", syncApp)
 	.route("/user", userApp)
