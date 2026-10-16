@@ -1,5 +1,4 @@
 import type { Analytics } from "@tomo/api";
-import { cn } from "~/lib/utils";
 
 function label(day: string) {
 	return new Date(day).toLocaleDateString(undefined, { month: "short", day: "numeric" });
@@ -14,12 +13,12 @@ export function Daily({ days }: { days: Analytics.Daily[] }) {
 	const peak = Math.max(...chart.map((day) => day.visits), 1);
 
 	return (
-		<div className="flex h-40 items-end gap-1">
+		<div className="flex h-40 gap-1">
 			{chart.map((day) => (
 				<div className="flex min-w-0 grow flex-col items-center gap-2" key={day.day}>
 					<div className="flex w-full grow items-end">
 						<div
-							className={cn("w-full rounded-t-sm bg-primary/70 transition-all")}
+							className="w-full rounded-t-sm bg-primary/70 transition-all"
 							style={{ height: `${Math.max((day.visits / peak) * 100, 2)}%` }}
 							title={`${label(day.day)}: ${day.visits} visits, ${day.unique_visitors} visitors`}
 						/>
